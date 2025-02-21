@@ -49,9 +49,3 @@ export const resetPasswordOTPSchema=joi.object(
         otp:generalFeilds.otp
     }
 ).required()
-
-export const changeRoleSchema=joi.object(
-    {
-        userId:generalFeilds.id.required()
-    }
-).required()

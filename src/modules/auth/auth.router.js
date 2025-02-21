@@ -3,8 +3,7 @@ import { isValid } from "../../Middlewares/validation.middleware.js";
 import * as authController from "./controller/auth.controller.js";
 import {
   authRegisterSchema,
-  changeRoleSchema,
-  forgetPasswordSchema,
+    forgetPasswordSchema,
   headersSchema,
   logInSchema,
   reActivateAccSchema,
@@ -32,7 +31,7 @@ router.get("/confirm/:activationCode", authController.activateAcc);
 
 //request new email confirmation
 router.post(
-  "/newConfirm/:email",
+  "/newConfirm",
   isValid(reActivateAccSchema),
   authController.reActivateAcc
 );
@@ -51,12 +50,5 @@ router.post(
   authController.resetPasswordOTP
 );
 
-//change role by admin
-router.post(
-  "/changeRole/:userId",
-  auth(["superAdmin"]),
-  isValid(changeRoleSchema),
-  authController.changeRole
-);
 
 export default router;

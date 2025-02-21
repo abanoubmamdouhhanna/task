@@ -161,7 +161,7 @@ export const activateAcc = asyncHandler(async (req, res, next) => {
 //Re-Activate account
 
 export const reActivateAcc = asyncHandler(async (req, res, next) => {
-  const { email } = req.params;
+  const { email } = req.body;
   const user = await userModel.findOne({ email });
   if (!user) {
     return next(new Error("User not found", { cause: 404 }));
@@ -247,24 +247,3 @@ export const resetPasswordOTP = asyncHandler(async (req, res, next) => {
   }
   return next(new Error(`Invalid OTP code`, { cause: 409 }));
 });
-//====================================================================================================================//
-//change role
-
-export const changeRole =asyncHandler(async(req,res,next)=>
-{
-  const {userId}=req.params
-  const {role}=req.body
-  const checkUser=await userModel.findById(userId)
-  if (!checkUser) {
-    return next(new Error("User not found", { cause: 404 }));
-  }
-const user=await userModel.findByIdAndUpdate(userId,
-  {
-    role
-  },{new:true}
-)
-return res.status(200).json({
-  status: "success",
-  message: "Role changed successfully",
-});
-})
