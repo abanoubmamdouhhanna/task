@@ -20,7 +20,7 @@ export const signUp = asyncHandler(async (req, res, next) => {
   const existedUser = await userModel.findOne({ email });
 
   if (existedUser) {
-    return next(new Error("Email already exists", { cause: 401 }));
+    return next(new Error("Email already exists", { cause: 400 }));
   }
 
   // Generate activation code
