@@ -12,6 +12,7 @@ import {
 } from "../../../utils/generateAndVerifyToken.js";
 import userModel from "../../../../DB/models/User.model.js";
 import { activationMail } from "../../../utils/Emails/activationMail.js";
+import { emailres } from "../../../utils/Emails/emailres.js";
 
 // registeration
 export const signUp = asyncHandler(async (req, res, next) => {
@@ -154,7 +155,7 @@ export const activateAcc = asyncHandler(async (req, res, next) => {
   );
 
   return user.matchedCount
-    ? res.status(200).send("congratulations, your account is now activated")
+    ? res.status(200).send(emailres())
     : next(new Error("Account not found", { cause: 404 }));
 });
 //====================================================================================================================//
