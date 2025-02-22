@@ -22,7 +22,7 @@ export const emailres=()=>
             <div class="success-icon">✔️</div>
             <h1>Congratulations!</h1>
             <p>Your account has been successfully activated.</p>
-            <a href="http://localhost:3003/login" class="button">Go to Login</a>
+            <a href="https://abanoubmamdouhhanna.github.io/taskfe/#/login" class="button">Go to Login</a>
           </div>
         </body>
         </html>
